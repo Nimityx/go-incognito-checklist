@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/png" href="https://techlore.tech/favicon.ico">
+        <title>Go Incognito Checklist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1" />
+        <style>
+            body {
+                margin: 0;
+            }
+            .bgcolor {
+                background-color: #222222;
+            }
+            h2, h3, h4, h5, a, label, span {
+                color: white;
+            }
+            h2, h3, label {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .maxwidth {
+                max-width: 500px;
+            }
+            .selectcontainer {
+              display: block;
+              position: relative;
+              padding-left: 30px;
+              margin-bottom: 12px;
+              cursor: pointer;
+              font-size: 18px;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              vertical-align: middle;
+            }
+            .selectcontainer input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+            }
+            .selectcheckmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 25px;
+              width: 25px;
+              background-color: #eee;
+              border-radius: 50%;
+            }
+            .selectcontainer:hover input ~ .selectcheckmark {
+              background-color: #66ad57;
+            }
+            .selectcontainer input:checked ~ .selectcheckmark {
+              background-color: #66ad57;
+            }
+            .selectcheckmark:after {
+              content: "";
+              position: absolute;
+              display: none;
+            }
+            .selectcontainer input:checked ~ .selectcheckmark:after {
+              display: block;
+            }
+            .selectcontainer .selectcheckmark:after {
+             	top: 9px;
+            	left: 9px;
+            	width: 8px;
+            	height: 8px;
+            	border-radius: 50%;
+            	background: white;
+            }
+            input[type=button] {
+                width: 100%;
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type=button]:hover {
+                background-color: #45a049;
+            }
+            .resultTitle, #submitimport {
+                display: none;
+            }
+            #result, #exporttext, #importtext {
+                height: 0;
+                transition: 0.5s;
+            }
+            textarea {
+                width: 100%;
+                resize: vertical;
+                display: none;
+            }
+            #importtext {
+                padding-bottom: 40px;
+            }
+        </style>
+    </head>
+    <body class="bgcolor">
+        <center class="bgcolor">
+            <h2>Go Incognito Checklist</h2>
+            <div class="maxwidth">
+                <h3>Zone 1 Basic</h3>
+                <label class="selectcontainer"> Use a password manager
+                  <input type="checkbox" class="ans" value="5" id="ans0">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use a strong device login password
+                  <input type="checkbox" class="ans" value="5" id="ans1">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use a strong router password
+                  <input type="checkbox" class="ans" value="5" id="ans2">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use 2FA on all available services
+                  <input type="checkbox" class="ans" value="5" id="ans3">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Disable Google tracking on MyActivity page
+                  <input type="checkbox" class="ans" value="5" id="ans4">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Delete and minimize unused accounts
+                  <input type="checkbox" class="ans" value="5" id="ans5">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize social media privacy settings to stay safe
+                  <input type="checkbox" class="ans" value="5" id="ans6">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use a good, quality VPN or Tor
+                  <input type="checkbox" class="ans" value="5" id="ans7">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Use secure and encrypted messaging
+                  <input type="checkbox" class="ans" value="5" id="ans8">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use secure and encrypted email
+                  <input type="checkbox" class="ans" value="5" id="ans9">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use only trusted web extensions
+                  <input type="checkbox" class="ans" value="5" id="ans10">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use a privacy-respecting search engine
+                  <input type="checkbox" class="ans" value="5" id="ans11">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Frequently clear or never store browser data
+                  <input type="checkbox" class="ans" value="5" id="ans12">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize private & secure browser protections
+                  <input type="checkbox" class="ans" value="5" id="ans13">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Opt out of phone OS analytics/tracking
+                  <input type="checkbox" class="ans" value="5" id="ans14">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Disable unused phone radios (NFC/WiFi/BT,etc.)
+                  <input type="checkbox" class="ans" value="5" id="ans15">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Disable and minimize unused phone functions
+                  <input type="checkbox" class="ans" value="5" id="ans16">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Opt out of computer OS analytics/tracking
+                  <input type="checkbox" class="ans" value="5" id="ans17">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Disable unused computer radios (NFC/WiFi/BT,etc.)
+                  <input type="checkbox" class="ans" value="5" id="ans18">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Disable and minimize unused computer features
+                  <input type="checkbox" class="ans" value="5" id="ans19">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Clear device temporary data (Cache, Cookies, Logs, etc.)
+                  <input type="checkbox" class="ans" value="5" id="ans20">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Shred deleted files and data
+                  <input type="checkbox" class="ans" value="5" id="ans21">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Backup your data consistently
+                  <input type="checkbox" class="ans" value="5" id="ans22">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Avoid public computers
+                  <input type="checkbox" class="ans" value="5" id="ans23">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Avoid IOT & Smart Devices
+                  <input type="checkbox" class="ans" value="5" id="ans24">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize a safe & shredder
+                  <input type="checkbox" class="ans" value="5" id="ans25">
+                  <span class="selectcheckmark"></span>
+                </label><br>
+                <h3>Zone 2 Moderate</h3>
+                <label class="selectcontainer"> Disable all biometrics
+                  <input type="checkbox" class="ans" value="6" id="ans26">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Delete Google altogether
+                  <input type="checkbox" class="ans" value="6" id="ans27">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize pseudonyms to offload data
+                  <input type="checkbox" class="ans" value="6" id="ans28">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use privately-obtained phone numbers
+                  <input type="checkbox" class="ans" value="6" id="ans29">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Delete all personal social media
+                  <input type="checkbox" class="ans" value="6" id="ans30">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Use only private and secure browsers
+                  <input type="checkbox" class="ans" value="6" id="ans31">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize multiple browsers for different tasks
+                  <input type="checkbox" class="ans" value="6" id="ans32">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Move to as many FOSS alternatives as possible
+                  <input type="checkbox" class="ans" value="6" id="ans33">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Ditch type 1 Android (Samsung, HTC, etc.)
+                  <input type="checkbox" class="ans" value="6" id="ans34">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Secure your computer BIOS
+                  <input type="checkbox" class="ans" value="6" id="ans35">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Use full disk encryption
+                  <input type="checkbox" class="ans" value="6" id="ans36">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Spoof MAC address
+                  <input type="checkbox" class="ans" value="6" id="ans37">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Strip all OS telemetry/analytics
+                  <input type="checkbox" class="ans" value="6" id="ans38">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Ditch Windows
+                  <input type="checkbox" class="ans" value="6" id="ans39">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Delete file metadata & EXIF
+                  <input type="checkbox" class="ans" value="6" id="ans40">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Implement strong home security
+                  <input type="checkbox" class="ans" value="6" id="ans41">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use cable locks & intrusion kits for devices
+                  <input type="checkbox" class="ans" value="6" id="ans42">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Completely ditch IOT & smart devices
+                  <input type="checkbox" class="ans" value="6" id="ans43">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use privacy screen protectors
+                  <input type="checkbox" class="ans" value="6" id="ans44">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use camera covers
+                  <input type="checkbox" class="ans" value="6" id="ans45">
+                  <span class="selectcheckmark"></span>
+                </label><br>
+                <h3>Zone 3 Advanced</h3>
+                <label class="selectcontainer"> Fully clean your digital footprint
+                  <input type="checkbox" class="ans" value="7" id="ans46">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Delete all social media
+                  <input type="checkbox" class="ans" value="7" id="ans47">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Utilize hardened and most trusted browsers
+                  <input type="checkbox" class="ans" value="7" id="ans48">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Use Custom ROMs/Dumb Phones
+                  <input type="checkbox" class="ans" value="7" id="ans49">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <label class="selectcontainer"> Use Private/Secure Desktop OS(s)
+                  <input type="checkbox" class="ans" value="7" id="ans50">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Shop online and in-person privately
+                  <input type="checkbox" class="ans" value="7" id="ans51">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Physically remove cameras/mics
+                  <input type="checkbox" class="ans" value="7" id="ans52">
+                  <span class="selectcheckmark"></span>
+                </label>
+                <label class="selectcontainer"> Avoid facial recognition/AI in public
+                  <input type="checkbox" class="ans" value="7" id="ans53">
+                  <span class="selectcheckmark"></span>
+                </label><br><br>
+                <input type="button" id="calculate" value="Results"><br>
+                <input type="button" id="save" value="Save Checklist"><br>
+                <input type="button" id="load" value="Load Checklist"><br>
+                <input type="button" id="export" value="Export">
+                <input type="button" id="import" value="Import">
+                <br><br>
+                <div id="exporttext">
+                    <textarea id="texttoexport"></textarea>
+                </div>
+                <div id="importtext">
+                    <textarea id="texttoimport"></textarea>
+                    <input type="button" id="submitimport" value="Submit">
+                </div>
+                <div id="result">
+                    <h2 id="z1" class="resultTitle">Zone 1</h2><br>
+                    <iframe width="100%" height="475px" style="border:0;display:none;" id="zone1"></iframe><br>
+                    <h2 id="z2" class="resultTitle">Zone 2</h2><br>
+                    <iframe width="100%" height="475px" style="border:0;display:none;" id="zone2"></iframe><br>
+                    <h2 id="z3" class="resultTitle">Zone 3</h2><br>
+                    <iframe width="100%" height="475px" style="border:0;display:none;" id="zone3"></iframe><br>
+                    <h2 id="t" class="resultTitle">Total</h2><br>
+                    <iframe width="100%" height="475px" style="border:0;display:none;" id="progress"></iframe>
+                </div>
+            </div>
+            <div style="padding-bottom:200px;">
+            </div>
+        </center>
+        <script>
+            document.querySelector("#calculate").onclick = function() {
+                document.getElementById("result").style = "height:2277px;";
+                var i, s = 0; x = document.querySelectorAll(".ans[value='5']:checked");
+                for (i = 0; i < x.length; i++) {
+                    s += parseInt(x[i].value);
+                }
+                document.querySelector("#z1").style.display = "block";
+                document.querySelector("#zone1").style.display = "block";
+                document.querySelector("#zone1").src = "https://miniurl.id/tools/circle-progress?max=130&width=450&value=" + s;
+                var i, s = 0; x = document.querySelectorAll(".ans[value='6']:checked");
+                for (i = 0; i < x.length; i++) {
+                    s += parseInt(x[i].value);
+                }
+                document.querySelector("#z2").style.display = "block";
+                document.querySelector("#zone2").style.display = "block";
+                document.querySelector("#zone2").src = "https://miniurl.id/tools/circle-progress?max=120&width=450&value=" + s;
+                var i, s = 0; x = document.querySelectorAll(".ans[value='7']:checked");
+                for (i = 0; i < x.length; i++) {
+                    s += parseInt(x[i].value);
+                }
+                document.querySelector("#z3").style.display = "block";
+                document.querySelector("#zone3").style.display = "block";
+                document.querySelector("#zone3").src = "https://miniurl.id/tools/circle-progress?max=56&width=450&value=" + s;
+                var i, s = 0; x = document.querySelectorAll(".ans:checked");
+                for (i = 0; i < x.length; i++) {
+                    s += parseInt(x[i].value);
+                }
+                document.querySelector("#t").style.display = "block";
+                document.querySelector("#progress").style.display = "block";
+                document.querySelector("#progress").src = "https://miniurl.id/tools/circle-progress?max=306&width=450&value=" + s;
+            }
+            function setCookie(cname,cvalue,exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            document.querySelector("#save").onclick = function() {
+                if (document.querySelectorAll(".ans:checked").length > 0) {
+                    var i, s = 0; x = document.querySelectorAll(".ans:checked");
+                    for (i = 0; i < x.length; i++) {
+                        s += parseInt(x[i].value);
+                    }
+                    var score = s;
+                    var i, s = ""; x = document.querySelectorAll(".ans:checked");
+                    var z = x.length - 1;
+                    for (i = 0; i < z; i++) {
+                        s += '"';
+                        s += x[i].id;
+                        s += '",';
+                    }
+                    s += '"';
+                    s += x[z].id;
+                    s += '"'
+                    var json = '{"score":' + score + ',"checked":[' + s + ']}';
+                    setCookie("savedData", json, 365);
+                    alert("Data Saved");
+                } else {
+                    alert("No checked checkbox !");
+                }
+                
+            }
+            document.querySelector("#load").onclick = function() {
+                var savedData = getCookie("savedData");
+                if (savedData != null  && savedData != "") {
+                    var json = JSON.parse(savedData);
+                    var confirmInput = confirm("Score: " + json.score + "\nChecked box: " + JSON.stringify(json.checked) + "\nLoad data to page?");
+                    if (confirmInput === true) {
+                        var i, s = 0; x = json.checked;
+                        for (i = 0; i < x.length; i++) {
+                            document.getElementById(x[i]).checked = true;
+                        }
+                    }
+                } else {
+                    alert("No data found !");    
+                }
+            }
+            function exportjson() {
+                if (document.querySelectorAll(".ans:checked").length > 0) {
+                    var i, s = 0; x = document.querySelectorAll(".ans:checked");
+                    for (i = 0; i < x.length; i++) {
+                        s += parseInt(x[i].value);
+                    }
+                    var score = s;
+                    var i, s = ""; x = document.querySelectorAll(".ans:checked");
+                    var z = x.length - 1;
+                    for (i = 0; i < z; i++) {
+                        s += '"';
+                        s += x[i].id;
+                        s += '",';
+                    }
+                    s += '"';
+                    s += x[z].id;
+                    s += '"'
+                    var json = '{"score":' + score + ',"checked":[' + s + ']}';
+                    document.querySelector("#texttoexport").innerHTML = json;
+                    document.querySelector("#exporttext").style = "height:150px;";
+                    document.querySelector("#texttoexport").style = "height:150px;";
+                    document.querySelector("#texttoexport").style.display = "block";
+                    document.querySelector("#export").setAttribute("onclick", "hideexport()");
+                } else {
+                    alert("No checked checkbox !");
+                }
+            }
+            function hideexport() {
+                document.querySelector("#exporttext").style = "height:0;";
+                document.querySelector("#texttoexport").style = "height:0;";
+                document.querySelector("#texttoexport").style.display = "none";
+                document.querySelector("#export").setAttribute("onclick", "exportjson()");
+            }
+            function importjson() {
+                document.querySelector("#importtext").style = "height:150px;";
+                document.querySelector("#texttoimport").style = "height:150px;";
+                document.querySelector("#texttoimport").style.display = "block";
+                document.querySelector("#submitimport").style.display = "block";
+                document.querySelector("#import").setAttribute("onclick", "hideimport()");
+            }
+            function IsJsonString(str) {
+                try {
+                    JSON.parse(str);
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            }
+            document.querySelector("#submitimport").onclick = function() {
+                var submittedData = document.querySelector("#texttoimport").value;
+                if (submittedData != null  && submittedData != "") {
+                    if (IsJsonString(submittedData) == true) {
+                        var json = JSON.parse(submittedData);
+                        var confirmInput = confirm("Score: " + json.score + "\nChecked box: " + JSON.stringify(json.checked) + "\nLoad data to page?");
+                        if (confirmInput === true) {
+                            var i, s = 0; x = json.checked;
+                            for (i = 0; i < x.length; i++) {
+                                document.getElementById(x[i]).checked = true;
+                            }
+                        }
+                    } else {
+                        alert("Invalid JSON format !");
+                    }
+                } else {
+                    alert("No data submitted !");    
+                }
+            }
+            function hideimport() {
+                document.querySelector("#importtext").style = "height:0;";
+                document.querySelector("#texttoimport").style = "height:0;";
+                document.querySelector("#texttoimport").style.display = "none";
+                document.querySelector("#submitimport").style.display = "none";
+                document.querySelector("#import").setAttribute("onclick", "importjson()");
+            }
+            window.onload = function() {
+                document.querySelector("#export").setAttribute("onclick", "exportjson()");
+                document.querySelector("#texttoexport").setAttribute("onfocus", "this.select()");
+                document.querySelector("#import").setAttribute("onclick", "importjson()");
+            }
+        </script>
+    </body>
+</html>
