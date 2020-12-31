@@ -5,5 +5,5 @@ Checklist of [Techlore's](https://github.com/techlore-official) [Go Incognito](h
 
 Features:
 - Go Incognito Score per zone & total score
-- Save/Load checklist to/from web browser
+- Save/Load checklist to/from web browser cookie
 - Export/Import checklist as JSON
