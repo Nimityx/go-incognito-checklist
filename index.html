@@ -428,16 +428,28 @@
                 }
                 
             }
+            function IsJsonString(str) {
+                try {
+                    JSON.parse(str);
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            }
             document.querySelector("#load").onclick = function() {
                 var savedData = getCookie("savedData");
                 if (savedData != null  && savedData != "") {
-                    var json = JSON.parse(savedData);
-                    var confirmInput = confirm("Score: " + json.score + "\nChecked box: " + JSON.stringify(json.checked) + "\nLoad data to page?");
-                    if (confirmInput === true) {
-                        var i, s = 0; x = json.checked;
-                        for (i = 0; i < x.length; i++) {
-                            document.getElementById(x[i]).checked = true;
+                    if (IsJsonString(savedData) == true) {
+                        var json = JSON.parse(savedData);
+                        var confirmInput = confirm("Score: " + json.score + "\nChecked box: " + JSON.stringify(json.checked) + "\nLoad data to page?");
+                        if (confirmInput === true) {
+                            var i, s = 0; x = json.checked;
+                            for (i = 0; i < x.length; i++) {
+                                document.getElementById(x[i]).checked = true;
+                            }
                         }
+                    } else {
+                        alert("Invalid JSON format !");
                     }
                 } else {
                     alert("No data found !");    
@@ -482,14 +494,6 @@
                 document.querySelector("#texttoimport").style.display = "block";
                 document.querySelector("#submitimport").style.display = "block";
                 document.querySelector("#import").setAttribute("onclick", "hideimport()");
-            }
-            function IsJsonString(str) {
-                try {
-                    JSON.parse(str);
-                } catch (e) {
-                    return false;
-                }
-                return true;
             }
             document.querySelector("#submitimport").onclick = function() {
                 var submittedData = document.querySelector("#texttoimport").value;
